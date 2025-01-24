@@ -481,4 +481,4 @@ def update_product_page(selected_product, selected_sector, selected_year, select
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, port = 8080)
