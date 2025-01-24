@@ -2,6 +2,3 @@ dash==2.16.1
 pandas==1.4.3
 gunicorn
 dash-tools
-setuptools>=42
-wheel
-git+https://github.com/docopt/docopt.git
