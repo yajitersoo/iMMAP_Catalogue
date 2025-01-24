@@ -1,0 +1,418 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #b82b2c;
+    color: white;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-right {
+    display: flex;
+    gap: 15px;
+}
+
+.top-bar a, .top-bar div {
+    color: white; /* Set initial text color to white */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+/* Hover effect - text turns red */
+.top-bar a:hover, .top-bar div:hover {
+    color: #1b5ea0
+}
+
+/* Top Bar Right section */
+.top-bar-right {
+    display: flex;
+    gap: 15px;
+}
+
+/* Logo and Navigation */
+.logo-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    max-height: 80px;  
+}
+
+.nav-menu .nav-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    height: 54vh;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#carousel-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.carousel-overlay {
+    background-color: rgba(0, 0, 0, 0.4); /* Black tint with 40% transparency */
+    padding: 20px; /* Add spacing inside the box */
+    border-radius: 10px; /* Optional rounded corners */
+    color: white; /* Ensure text color is visible */
+    width: 100%; /* Full width */
+    max-width: 1000px; /* Optional, limit max width */
+    margin: 0 auto; /* Center align */
+    text-align: center; /* Center text alignment */
+}
+
+
+.carousel-heading {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+
+.carousel-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.carousel-button {
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+/* Fade-in effect applied dynamically */
+.carousel-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0px;
+}
+
+
+/* Fade-in animation */
+.fade {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Alternative fade-in animation to ensure re-triggering */
+.fade-alt {
+    opacity: 0;
+    animation: fadeInAlt 1s ease-in-out forwards;
+}
+
+/* First fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Second fade-in animation (alternate effect) */
+@keyframes fadeInAlt {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 20px;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .carousel {
+        width: 90%;
+    }
+}
+
+/* Product Catalogue */
+.promoted-courses-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.course-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.course-card {
+    text-align: center;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 0 0 150px; /* Fixed width for each card */
+}
+
+.course-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.course-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.course-link {
+    text-decoration: none;
+    color: #d9534f;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Footer Content */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Social Links Container */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Individual Social Link */
+.social-link {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Icon Styling */
+.social-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Hover Effects */
+.social-link:hover {
+    background-color: #fff;
+    color: #333;
+    transform: scale(1.1);
+}
+
+/* Logo and Navigation Bar */
+.logo-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border-bottom: 3px solid #f0f0f2;
+}
+
+.logo-container .logo {
+    max-height: 30px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 10px 18px;
+    border-radius: 2px;
+    transition: background 0.3s ease-in-out;
+}
+
+
+/* Hover effect */
+.nav-link:hover {
+    background-color: #d35853;
+    color: #FFFFFF;
+}
+
+/* Active link styling with red text */
+.nav-link.active {
+    background-color: #ffffff !important;  /* Ensure background change */
+    color: #d35853 !important;  /* Red text for active tab */
+    font-weight: bold;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .logo-nav-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+/* Active link styling with red text */
+.nav-link.active {
+    background-color: #3498DB;
+    color: #FF0000;  /* Red color for active tab text */
+}
+
+.floating-about {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(26, 56, 95, 0.7);  /* Black with 70% transparency */
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    transition: all 0.3s ease-in-out;
+}
+
+.floating-about:hover {
+    transform: scale(1.05);
+}
+
+.about-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FFD700;  /* Gold color for heading */
+}
+
+.about-content {
+    font-size: 0.5em;
+    line-height: 1.5;
+    
+}
+
+
+
+
+/* Align items to the left with no spacing */
+.dropdown-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* No gap between elements */
+    margin: 10px 10px;
+}
+
+/* Keep labels close to dropdowns */
+.dropdown-label {
+    font-weight: normal;
+    margin-right: 15px;  /* Small gap between label and dropdown */
+    font-size: 1em;
+}
+
+/* Ensure each dropdown and label pair is spaced properly */
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Label style */
+.dropdown-label {
+    font-weight: bold;
+    margin-bottom: 5px;  /* Small gap between label and dropdown */
+}
