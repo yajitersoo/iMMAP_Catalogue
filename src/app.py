@@ -1,7 +1,7 @@
 import dash
 import os
 import pandas as pd
-from dash import Dash, html, dcc, Input, Output, State, no_update, callback_contextgit add src/app.py
+from dash import Dash, html, dcc, Input, Output, State, no_update, callback_context
 def load_product_data():
     # Correct relative path handling for Render deployment
     file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
