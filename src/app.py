@@ -5,7 +5,8 @@ from dash import Dash, html, dcc, Input, Output, State, no_update, callback_cont
 
 def load_product_data():
     try:
-        df = pd.read_excel(r"C:\Users\tyaji\OneDrive\Documents\Code Product Catalogue\assets\products.xlsx")
+        file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
+        df = pd.read_excel(file_path)
         df['Category'] = df['Category'].fillna('Unknown').astype(str)  # Fill NaN and convert to string
         return df.to_dict('records')
     except Exception as e:
