@@ -1,30 +1,45 @@
 import dash
 import os
 import pandas as pd
+import openpyxl
 from dash import Dash, html, dcc, Input, Output, State, no_update, callback_context
+
+import os
+import pandas as pd
+
+
 def load_product_data():
-    # Correct file path handling for Render deployment
-    # Correct relative file path handling for Render deployment
-    file_path = '/opt/render/project/src/assets/products.xlsx'
+    # Determine the correct file path dynamically
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the script's directory
+    file_path = os.path.join(script_dir, 'assets', 'products.xlsx')
+
+    print(f"Looking for file at: {file_path}")  # Debugging
+
     try:
-        df = pd.read_excel(file_path)
+        # Load the Excel file with openpyxl engine
+        df = pd.read_excel(file_path, engine='openpyxl')
         print(f"Excel file loaded successfully from {file_path}")
-        df['Category'] = df['Category'].fillna('Unknown').astype(str)  # Fill NaN and convert to string
+
+        # Fill missing values and ensure category is string
+        df['Category'] = df['Category'].fillna('Unknown').astype(str)
         return df.to_dict('records')
+
     except FileNotFoundError:
         print(f"Error: File not found at {file_path}")
-        return []  # Handle missing file gracefully
+        return []  # Return empty list if file is missing
+
     except Exception as e:
         print(f"Error loading Excel file: {e}")
-        return []  # Return empty list if any other error occurs
-
-
+        return []  # Handle any other errors gracefully
 
 
 # Create Dash app
-app = Dash(__name__,
-           external_stylesheets=['/assets/style.css'],  # Load the local CSS file
-           suppress_callback_exceptions=True)
+app = dash.Dash(
+    __name__,
+    external_stylesheets=['/assets/style.css'],  # Dash automatically serves files from 'assets' folder
+    suppress_callback_exceptions=True
+)
+
 # Expose the Flask server instance for deployment
 server = app.server
 app.title = "iMMAP Product Catalogue"
@@ -64,6 +79,7 @@ app.layout = html.Div(
 
         # Store components to track carousel index and fade trigger
         dcc.Store(id='carousel-index', data=0),
+        # html.Link(rel='stylesheet', href='/assets/style.css'),
         # Top Bar
         html.Div(
             [
@@ -490,5 +506,10 @@ def update_product_page(selected_product, selected_sector, selected_year, select
 
 
 
+# if __name__ == "__main__":
+#     app.run_server(debug=True, port = 8080)
 if __name__ == "__main__":
-    app.run_server(debug=True, port = 8080)
+    app.run_server(
+        debug=True,
+        # host='0.0.0.0',
+        port=8080)
