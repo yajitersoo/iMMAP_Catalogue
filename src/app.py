@@ -3,11 +3,11 @@ import os
 import pandas as pd
 from dash import Dash, html, dcc, Input, Output, State, no_update, callback_context
 def load_product_data():
-    # Correct relative path handling for Render deployment
-    file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
+    # Correct file path handling for Render deployment
+    file_path = os.path.join(os.path.dirname(__file__), 'assets', 'products.xlsx')
     try:
         df = pd.read_excel(file_path)
-        print("Excel file loaded successfully.")
+        print(f"Excel file loaded successfully from {file_path}")
         df['Category'] = df['Category'].fillna('Unknown').astype(str)  # Fill NaN and convert to string
         return df.to_dict('records')
     except FileNotFoundError:
@@ -16,6 +16,7 @@ def load_product_data():
     except Exception as e:
         print(f"Error loading Excel file: {e}")
         return []  # Return empty list if any other error occurs
+
 
 
 
