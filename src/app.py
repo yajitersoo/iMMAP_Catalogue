@@ -22,7 +22,9 @@ def load_product_data():
 
 
 # Create Dash app
-app = dash.Dash(__name__, suppress_callback_exceptions=True,)
+app = Dash(__name__,
+           external_stylesheets=['/assets/style.css'],  # Load the local CSS file
+           suppress_callback_exceptions=True)
 # Expose the Flask server instance for deployment
 server = app.server
 app.title = "iMMAP Product Catalogue"
