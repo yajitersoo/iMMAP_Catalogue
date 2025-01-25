@@ -5,7 +5,7 @@ from dash import Dash, html, dcc, Input, Output, State, no_update, callback_cont
 def load_product_data():
     # Correct file path handling for Render deployment
     # Correct relative file path handling for Render deployment
-    file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
+    file_path = '/opt/render/project/src/assets/products.xlsx'
     try:
         df = pd.read_excel(file_path)
         print(f"Excel file loaded successfully from {file_path}")
