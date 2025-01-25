@@ -1,18 +1,22 @@
 import dash
-import os
 import pandas as pd
 from dash import Dash, html, dcc, Input, Output, State, no_update, callback_context
 
-
 def load_product_data():
+    # Correct relative path handling for Render deployment
+    file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
     try:
-        file_path = os.path.join(os.getcwd(), 'assets', 'products.xlsx')
         df = pd.read_excel(file_path)
+        print("Excel file loaded successfully.")
         df['Category'] = df['Category'].fillna('Unknown').astype(str)  # Fill NaN and convert to string
         return df.to_dict('records')
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+        return []  # Handle missing file gracefully
     except Exception as e:
         print(f"Error loading Excel file: {e}")
-        return []
+        return []  # Return empty list if any other error occurs
+
 
 
 # Create Dash app
