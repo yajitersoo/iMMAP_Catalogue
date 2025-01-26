@@ -83,14 +83,28 @@ app.layout = html.Div(
         # Top Bar
         html.Div(
             [
-                html.Div("Call us: (258) 84 564 5353", className="top-bar-text"),
                 html.Div(
                     [
-                        html.A("nigeria@immap.org", href="mailto:nigeria@immap.org", className="top-bar-link"),
-                        # html.Div("English (en)", className="top-bar-language"),
-                        # html.A("Log in", href="#", className="top-bar-login"),
+
+                        html.Div(
+                            "iMMAP Inc Product Catalogue",
+                            className="top-bar-title",
+                            style={"textAlign": "center", "fontSize": "24px", "fontWeight": "bold", "flexGrow": "1"}
+                        ),
+                        html.Div(
+                            [
+                                html.A("Email us: nigeria@immap.org", href="mailto:nigeria@immap.org", className="top-bar-link",
+                                       style={"fontSize": "8px", "fontWeight": "normal"}),
+                                html.Div("Call us: (258) 84 564 5353", className="top-bar-text",
+                                         style={"marginTop": "5px", "fontSize": "8px", "fontWeight": "normal"})
+                            ],
+                            className="top-bar-contact",
+                            style={"display": "flex", "flexDirection": "column", "alignItems": "center"}
+                        ),
                     ],
-                    className="top-bar-right",
+                    className="top-bar-content",
+                    style={"display": "flex", "alignItems": "center", "justifyContent": "space-between",
+                           "width": "100%"}
                 ),
             ],
             className="top-bar",
